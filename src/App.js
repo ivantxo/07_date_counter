@@ -1,42 +1,23 @@
-import { useState } from "react";
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-  const [step, setStep] = useState(1);
-  const [count, setCount] = useState(0);
-
-  function decreaseStep() {
-    setStep((c) => c - 1);
-  }
-
-  function increaseStep() {
-    setStep((c) => c + 1);
-  }
-
-  function decreaseCount() {
-    setCount((c) => c - step);
-  }
-
-  function increaseCount() {
-    setCount((c) => c + step);
-  }
-
-  let day = count === 0 ? "Today" : `${count} days from today`;
-
-  const today = new Date();
-  today.setDate(today.getDate() + count);
   return (
-    <div style={{ textAlign: "center", fontSize: "26px" }}>
-      <div>
-        <button onClick={() => decreaseStep()}>-</button> Step {step}{" "}
-        <button onClick={() => increaseStep()}>+</button>
-      </div>
-      <div>
-        <button onClick={() => decreaseCount()}>-</button> Count {count}{" "}
-        <button onClick={() => increaseCount()}>+</button>
-      </div>
-      <div>
-        {day} is {today.toDateString()}
-      </div>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }
