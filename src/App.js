@@ -20,6 +20,11 @@ function App() {
     setCount(localCount);
   }
 
+  function resetStates() {
+    setStep(1);
+    setCount(0);
+  }
+
   let day = count === 0 ? "Today" : `${count} days from today`;
 
   const today = new Date();
@@ -44,11 +49,17 @@ function App() {
           value={count}
           onChange={(e) => handleCount(e.target.value)}
         />
-        <button onClick={() => increaseCount()}>+</button>
+        <button onClick={() => increaseCount()}>-</button>
       </div>
       <div>
         {day} is {today.toDateString()}
       </div>
+
+      {count !== 0 || step !== 1 ? (
+        <div>
+          <button onClick={() => resetStates()}>Reset</button>
+        </div>
+      ) : null}
     </div>
   );
 }
