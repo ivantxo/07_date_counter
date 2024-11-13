@@ -4,12 +4,8 @@ function App() {
   const [step, setStep] = useState(1);
   const [count, setCount] = useState(0);
 
-  function decreaseStep() {
-    setStep((c) => c - 1);
-  }
-
-  function increaseStep() {
-    setStep((c) => c + 1);
+  function handleStep(localStep) {
+    setStep(localStep);
   }
 
   function decreaseCount() {
@@ -20,6 +16,10 @@ function App() {
     setCount((c) => c + step);
   }
 
+  function handleCount(localCount) {
+    setCount(localCount);
+  }
+
   let day = count === 0 ? "Today" : `${count} days from today`;
 
   const today = new Date();
@@ -27,11 +27,23 @@ function App() {
   return (
     <div style={{ textAlign: "center", fontSize: "26px" }}>
       <div>
-        <button onClick={() => decreaseStep()}>-</button> Step {step}{" "}
-        <button onClick={() => increaseStep()}>+</button>
+        <input
+          style={{ width: "230px", margin: "0 auto" }}
+          type="range"
+          min="0"
+          max="10"
+          value={step}
+          onChange={(e) => handleStep(Number(e.target.value))}
+        />
+        {step}
       </div>
       <div>
-        <button onClick={() => decreaseCount()}>-</button> Count {count}{" "}
+        <button onClick={() => decreaseCount()}>-</button>
+        <input
+          type="text"
+          value={count}
+          onChange={(e) => handleCount(e.target.value)}
+        />
         <button onClick={() => increaseCount()}>+</button>
       </div>
       <div>
